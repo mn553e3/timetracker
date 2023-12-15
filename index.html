@@ -48,11 +48,16 @@ function u() {
 
 function t(j) {
   let l = s[j];
-  l.n ? clearInterval(l.n) : l.n = setInterval(() => {
-    l.m++;
-    document.querySelectorAll('.m')[j].textContent = f(l.m);
-  }, 1000);
-  l.n ? l.n = null : u();
+  if (l.n) {
+    clearInterval(l.n);
+    l.n = null;
+  } else {
+    l.n = setInterval(() => {
+      l.m++;
+      document.querySelectorAll('.m')[j].textContent = f(l.m);
+    }, 1000);
+  }
+  document.querySelectorAll('button')[j * 2].textContent = l.n ? 'Stop' : 'Start';
 }
 
 function r(j) {
